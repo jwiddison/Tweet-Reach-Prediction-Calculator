@@ -5,9 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1478826417.199022
+_modified_time = 1478888913.979534
 _enable_loop = True
-_template_filename = '/Users/Jordan/Desktop/415MLStudio/TweetPrediction/templates/index.html'
+_template_filename = '/Users/Jordan/Documents/BYU/0 - MISM - 1/Fall 2016/IS 415/NuviProject/TweetPrediction/templates/index.html'
 _template_uri = 'index.html'
 _source_encoding = 'utf-8'
 import os, os.path, re, json
@@ -29,10 +29,9 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
-        form = context.get('form', UNDEFINED)
-        result = context.get('result', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
@@ -48,16 +47,17 @@ def render_body(context,**pageargs):
 def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def content():
             return render_content(context)
-        form = context.get('form', UNDEFINED)
-        result = context.get('result', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\n  <div class="container">\n    <div class="row">\n      <div class="col-md-12">\n        <h1>IS415 NuviProject Loan Calculator</h1>\n        <hr />\n      </div>\n    </div>\n    <div class="row">\n      <div class="col-md-6">\n        <h3>Enter Loan Information:</h3>\n        <form id="prediction_form" method=\'POST\'>\n          <table id="prediction_table">\n            ')
-        __M_writer(str(form.as_table()))
-        __M_writer('\n          </table>\n          <input type="submit" class="btn btn-primary" value="Get a Prediction">\n        </form>\n      </div>\n      <div class="col-md-6">\n        <p>\n          <div id="response_placeholder">\n            ')
-        __M_writer(str(result))
-        __M_writer('\n          </div>\n        </p>\n      </div>\n    </div>\n  </div>\n')
+        __M_writer('\n  <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">\n      <div class="container topnav">\n          <div class="navbar-header">\n              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">\n                  <span class="sr-only">Toggle navigation</span>\n                  <span class="icon-bar"></span>\n                  <span class="icon-bar"></span>\n                  <span class="icon-bar"></span>\n              </button>\n              <a class="navbar-brand topnav" href="#">Start Bootstrap</a>\n          </div>\n          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">\n              <ul class="nav navbar-nav navbar-right">\n                  <li>\n                      <a href="#about">About</a>\n                  </li>\n                  <li>\n                      <a href="#services">Services</a>\n                  </li>\n                  <li>\n                      <a href="#contact">Contact</a>\n                  </li>\n              </ul>\n          </div>\n      </div>\n  </nav>\n\n  <a name="about"></a>\n  <div class="intro-header">\n      <div class="container">\n\n          <div class="row">\n              <div class="col-lg-12">\n                  <div class="intro-message">\n                      <h1>Landing Page</h1>\n                      <h3>A Template by Start Bootstrap</h3>\n                      <hr class="intro-divider">\n                      <ul class="list-inline intro-social-buttons">\n                          <li>\n                              <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>\n                          </li>\n                          <li>\n                              <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>\n                          </li>\n                          <li>\n                              <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>\n                          </li>\n                      </ul>\n                  </div>\n              </div>\n          </div>\n\n      </div>\n      <!-- /.container -->\n\n  </div>\n  <!-- /.intro-header -->\n\n  <!-- Page Content -->\n\n<a  name="services"></a>\n  <div class="content-section-a">\n\n      <div class="container">\n          <div class="row">\n              <div class="col-lg-5 col-sm-6">\n                  <hr class="section-heading-spacer">\n                  <div class="clearfix"></div>\n                  <h2 class="section-heading">Death to the Stock Photo:<br>Special Thanks</h2>\n                  <p class="lead">A special thanks to <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a> for providing the photographs that you see in this template. Visit their website to become a member.</p>\n              </div>\n              <div class="col-lg-5 col-lg-offset-2 col-sm-6">\n                  <img class="img-responsive" src="')
+        __M_writer(str( STATIC_URL ))
+        __M_writer('TweetPrediction/media/pics/ipad.png" alt="">\n              </div>\n          </div>\n\n      </div>\n      <!-- /.container -->\n\n  </div>\n  <!-- /.content-section-a -->\n\n  <div class="content-section-b">\n\n      <div class="container">\n\n          <div class="row">\n              <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">\n                  <hr class="section-heading-spacer">\n                  <div class="clearfix"></div>\n                  <h2 class="section-heading">3D Device Mockups<br>by PSDCovers</h2>\n                  <p class="lead">Turn your 2D designs into high quality, 3D product shots in seconds using free Photoshop actions by <a target="_blank" href="http://www.psdcovers.com/">PSDCovers</a>! Visit their website to download some of their awesome, free photoshop actions!</p>\n              </div>\n              <div class="col-lg-5 col-sm-pull-6  col-sm-6">\n                  <img class="img-responsive" src="')
+        __M_writer(str( STATIC_URL ))
+        __M_writer('TweetPrediction/media/pics/dog.png" alt="">\n              </div>\n          </div>\n\n      </div>\n      <!-- /.container -->\n\n  </div>\n  <!-- /.content-section-b -->\n\n  <div class="content-section-a">\n\n      <div class="container">\n\n          <div class="row">\n              <div class="col-lg-5 col-sm-6">\n                  <hr class="section-heading-spacer">\n                  <div class="clearfix"></div>\n                  <h2 class="section-heading">Google Web Fonts and<br>Font Awesome Icons</h2>\n                  <p class="lead">This template features the \'Lato\' font, part of the <a target="_blank" href="http://www.google.com/fonts">Google Web Font library</a>, as well as <a target="_blank" href="http://fontawesome.io">icons from Font Awesome</a>.</p>\n              </div>\n              <div class="col-lg-5 col-lg-offset-2 col-sm-6">\n                  <img class="img-responsive" src="')
+        __M_writer(str( STATIC_URL ))
+        __M_writer('TweetPrediction/media/pics/phones.png" alt="">\n              </div>\n          </div>\n\n      </div>\n      <!-- /.container -->\n\n  </div>\n  <!-- /.content-section-a -->\n\n<a  name="contact"></a>\n  <div class="banner">\n\n      <div class="container">\n\n          <div class="row">\n              <div class="col-lg-6">\n                  <h2>Connect to Start Bootstrap:</h2>\n              </div>\n              <div class="col-lg-6">\n                  <ul class="list-inline banner-social-buttons">\n                      <li>\n                          <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>\n                      </li>\n                      <li>\n                          <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>\n                      </li>\n                      <li>\n                          <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>\n                      </li>\n                  </ul>\n              </div>\n          </div>\n\n      </div>\n      <!-- /.container -->\n\n  </div>\n  <!-- /.banner -->\n\n  <!-- Footer -->\n  <footer>\n      <div class="container">\n          <div class="row">\n              <div class="col-lg-12">\n                  <ul class="list-inline">\n                      <li>\n                          <a href="#">Home</a>\n                      </li>\n                      <li class="footer-menu-divider">&sdot;</li>\n                      <li>\n                          <a href="#about">About</a>\n                      </li>\n                      <li class="footer-menu-divider">&sdot;</li>\n                      <li>\n                          <a href="#services">Services</a>\n                      </li>\n                      <li class="footer-menu-divider">&sdot;</li>\n                      <li>\n                          <a href="#contact">Contact</a>\n                      </li>\n                  </ul>\n                  <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>\n              </div>\n          </div>\n      </div>\n  </footer>\n\n  <!-- jQuery -->\n  <script src="js/jquery.js"></script>\n\n  <!-- Bootstrap Core JavaScript -->\n  <script src="js/bootstrap.min.js"></script>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -65,6 +65,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/Users/Jordan/Desktop/415MLStudio/TweetPrediction/templates/index.html", "uri": "index.html", "line_map": {"48": 3, "66": 60, "37": 1, "56": 3, "57": 16, "42": 30, "59": 24, "28": 0, "58": 16, "60": 24}, "source_encoding": "utf-8"}
+{"source_encoding": "utf-8", "uri": "index.html", "filename": "/Users/Jordan/Documents/BYU/0 - MISM - 1/Fall 2016/IS 415/NuviProject/TweetPrediction/templates/index.html", "line_map": {"66": 60, "36": 1, "41": 193, "47": 3, "60": 120, "54": 3, "55": 76, "56": 76, "57": 98, "58": 98, "59": 120, "28": 0}}
 __M_END_METADATA
 """
