@@ -12,7 +12,12 @@ def addColumnToCSV(columnName, whatToPutInColumn):
             newColumn.append(row)
 
             for row in reader:
+                # row[2] is how you access the stuff in the text column.  So I was just appending the same stuff out of row[2].
+                # You can access row[2] and then use that data to call the Google API eventually.
                 # row.append(row[2])
+
+                # TODO: Call google text processing API here.
+
                 row.append(whatToPutInColumn)
                 newColumn.append(row)
 
