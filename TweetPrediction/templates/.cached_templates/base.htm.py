@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1478888845.873818
+_modified_time = 1478890018.69365
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - MISM - 1/Fall 2016/IS 415/NuviProject/TweetPrediction/templates/base.htm'
 _template_uri = 'base.htm'
@@ -20,17 +20,17 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        request = context.get('request', UNDEFINED)
         self = context.get('self', UNDEFINED)
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
-        request = context.get('request', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n<!DOCTYPE html>\n<html>\n  <meta charset="UTF-8">\n  <head>\n    <title>Nuvi Project</title>\n\n    <meta charset="utf-8">\n    <meta http-equiv="X-UA-Compatible" content="IE=edge">\n    <meta name="viewport" content="width=device-width, initial-scale=1">\n    <meta name="description" content="">\n    <meta name="author" content="">\n\n    <title>Landing Page - Start Bootstrap Theme</title>\n\n    <!-- CSS -->\n    <link rel="stylesheet" type="text/css" href="')
         __M_writer(str( STATIC_URL ))
         __M_writer('TweetPrediction/media/bootstrap/css/bootstrap.min.css" />\n    <link rel="stylesheet" type="text/css" href="')
         __M_writer(str( STATIC_URL ))
-        __M_writer('TweetPrediction/media/styles/landing-page.css" >\n    ')
+        __M_writer('TweetPrediction/styles/landing-page.css" >\n    ')
         __M_writer(str( get_template_css(self, request, context) ))
         __M_writer('\n    <!-- Fonts -->\n    <link rel="stylesheet" type="text/css" href="')
         __M_writer(str( STATIC_URL ))
@@ -61,6 +61,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"source_encoding": "utf-8", "uri": "base.htm", "filename": "/Users/Jordan/Documents/BYU/0 - MISM - 1/Fall 2016/IS 415/NuviProject/TweetPrediction/templates/base.htm", "line_map": {"32": 18, "33": 18, "34": 19, "35": 19, "36": 21, "37": 21, "42": 27, "43": 29, "44": 29, "17": 1, "50": 25, "19": 0, "62": 56, "56": 25, "29": 1, "30": 17, "31": 17}}
+{"filename": "/Users/Jordan/Documents/BYU/0 - MISM - 1/Fall 2016/IS 415/NuviProject/TweetPrediction/templates/base.htm", "uri": "base.htm", "line_map": {"32": 18, "33": 18, "34": 19, "35": 19, "36": 21, "37": 21, "42": 27, "43": 29, "44": 29, "17": 1, "50": 25, "19": 0, "62": 56, "56": 25, "29": 1, "30": 17, "31": 17}, "source_encoding": "utf-8"}
 __M_END_METADATA
 """
