@@ -1,0 +1,30 @@
+<%inherit file="base.htm" />
+
+<%block name="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>IS415 NuviProject Loan Calculator</h1>
+        <hr />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Enter Loan Information:</h3>
+        <form id="prediction_form" method='POST'>
+          <table id="prediction_table">
+            ${form.as_table()}
+          </table>
+          <input type="submit" class="btn btn-primary" value="Get a Prediction">
+        </form>
+      </div>
+      <div class="col-md-6">
+        <p>
+          <div id="response_placeholder">
+            ${result}
+          </div>
+        </p>
+      </div>
+    </div>
+  </div>
+</%block>

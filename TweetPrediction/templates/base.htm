@@ -1,0 +1,17 @@
+<%! from django_mako_plus import get_template_css, get_template_js %>
+<!DOCTYPE html>
+<html>
+  <meta charset="UTF-8">
+  <head>
+    <title>415 MLStudio TweetPrediction</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="${ STATIC_URL }TweetPrediction/media/bootstrap.min.css" />
+    ${ get_template_css(self, request, context) }
+  </head>
+  <body>
+    <%block name="content">
+      Site content goes here in sub-templates.
+    </%block>
+    ${ get_template_js(self, request, context) }
+  </body>
+</html>
