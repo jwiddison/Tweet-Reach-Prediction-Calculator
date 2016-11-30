@@ -140,9 +140,9 @@ TEMPLATES = [
 STATIC_URL = '/static/'   # you probably already have this
 STATICFILES_DIRS = (
  # SECURITY WARNING: this next line must be commented out at deployment
- BASE_DIR,
+ # BASE_DIR,
 )
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 WSGI_APPLICATION = 'NuviProject.wsgi.application'
 
