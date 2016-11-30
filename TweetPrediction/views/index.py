@@ -15,23 +15,31 @@ def process_request(request):
         form = PredictionForm(request.POST)
         if form.is_valid():
 
+            # data = {
+            #     "Inputs": {
+            #             "input1":
+            #             [
+            #                 {
+            #                     'tweet_text': form.cleaned_data.get('tweet_text'),
+            #                 }
+            #             ],
+            #     },
+            #     "GlobalParameters":  {
+            #     }
+            # }
+
             data = {
-                "Inputs": {
-                        "input1":
-                        [
-                            {
-                                'tweet_text': form.cleaned_data.get('tweet_text'),
-                            }
-                        ],
+                "document":{
+                    "type":"PLAIN_TEXT",
+                    "content": form.cleaned_data.get('tweet_text'),
                 },
-                "GlobalParameters":  {
-                }
+                "encodingType":"UTF8"
             }
 
             body = str.encode(json.dumps(data))
 
-            url = 'https://ussouthcentral.services.azureml.net/workspaces/84c08bbf7ef948f09c5e7b5074bd3614/services/6f7841236c584fcc8588d66755e9084a/execute?api-version=2.0&format=swagger'
-            api_key = 'LjvmH+004SytJP+Af0GnkGiE82LbO58iMCk0jSl55uW2lzZEuqL6fH91aw/Nx09W7F1HIyYJaMgb/gngjTL7CQ=='
+            url = 'https://language.googleapis.com/v1/documents:analyzeEntities'
+            api_key = 'ya29.El-mA9LbUyj_7OoDMsvPo8MVLwijCJpVmVfwdBGLG7hDmQmn78KrZiMweNYvMEX6nyO6o-2ub0Um1-4IkSFtLMV8bFkgPdY6ZpxUaRZBnQYQNzLYD80yqbr6HZdpX4TkOA'
             headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
 
             req = urllib.request.Request(url, body, headers)
