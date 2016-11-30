@@ -20,27 +20,7 @@ def process_request(request):
                         "input1":
                         [
                             {
-                                'loan_amnt': form.cleaned_data.get('loan_amount'),
-                                'term': form.cleaned_data.get('term'),
-                                'int_rate': form.cleaned_data.get('int_rate'),
-                                'installment': form.cleaned_data.get('installment'),
-                                'sub_grade': form.cleaned_data.get('sub_grade'),
-                                'emp_length': form.cleaned_data.get('emp_length'),
-                                'home_ownership': form.cleaned_data.get('home_ownership'),
-                                'annual_inc': form.cleaned_data.get('annual_inc'),
-                                'is_inc_v': form.cleaned_data.get('is_inc_v'),
-                                'purpose': form.cleaned_data.get('purpose'),
-                                'dti': form.cleaned_data.get('dti'),
-                                'delinq_2yrs': form.cleaned_data.get('delinq_2yrs'),
-                                'earliest_cr_line': form.cleaned_data.get('earliest_cr_line'),
-                                'inq_last_6mths': form.cleaned_data.get('inq_last_6mths'),
-                                'open_acc': form.cleaned_data.get('open_acc'),
-                                'pub_rec': form.cleaned_data.get('pub_rec'),
-                                'revol_bal': form.cleaned_data.get('revol_bal'),
-                                'revol_util': form.cleaned_data.get('revol_util'),
-                                'total_acc': form.cleaned_data.get('total_acc'),
-                                'pub_rec_bankruptcies': form.cleaned_data.get('pub_rec_bankruptcies'),
-                                'tax_liens': form.cleaned_data.get('tax_liens'),
+                                'tweet_text': form.cleaned_data.get('tweet_text'),
                             }
                         ],
                 },
