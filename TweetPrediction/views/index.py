@@ -55,7 +55,7 @@ def process_request(request):
 
 
 class PredictionForm(forms.Form):
-    tweet_text = forms.CharField(label='Tweet Text', required=True, widget=forms.TextInput(attrs={'placeholder': '...', 'class': 'form-control'}))
+    tweet_text = forms.CharField(label='',required=True, widget=forms.TextInput(attrs={'placeholder': 'Tweet Text', 'class': 'form-control'}))
 
     def clean(self):
         return self.cleaned_data

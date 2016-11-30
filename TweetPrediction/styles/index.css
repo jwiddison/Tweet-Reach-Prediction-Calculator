@@ -1,3 +1,16 @@
 .btn-primary {
   margin-bottom: 50px;
 }
+
+.navbar-default{
+  background-color:#203248;
+  border-bottom: none;
+}
+
+.navbar-default > a {
+  color:white;
+}
+
+.img-thumbnail, .btn-default, .navbar-default, .form-control, .btn-primary {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
