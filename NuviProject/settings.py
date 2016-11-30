@@ -25,7 +25,7 @@ SECRET_KEY = '15ov^j4kz7&gdj$ss*96z=r^46w*h*0dyd%j_-al^x%throu@v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # AUTH_USER_MODEL = 'account.User'
 
@@ -142,7 +142,7 @@ STATICFILES_DIRS = (
  # SECURITY WARNING: this next line must be commented out at deployment
  BASE_DIR,
 )
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR,"static")
 
 WSGI_APPLICATION = 'NuviProject.wsgi.application'
 
