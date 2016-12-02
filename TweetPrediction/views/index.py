@@ -39,7 +39,7 @@ def process_request(request):
             body = str.encode(json.dumps(data))
 
             url = 'https://language.googleapis.com/v1/documents:analyzeEntities'
-            api_key = 'ya29.El-mA9LbUyj_7OoDMsvPo8MVLwijCJpVmVfwdBGLG7hDmQmn78KrZiMweNYvMEX6nyO6o-2ub0Um1-4IkSFtLMV8bFkgPdY6ZpxUaRZBnQYQNzLYD80yqbr6HZdpX4TkOA'
+            api_key = 'ya29.El-oA3PRKJ_KCwXKdbE9-yNa1sUzWcAAEF_k8AKk_Ds_qBwZmyPuPUL-eHMFwd9Um9-ga6Rf2rzzbUxT9ChGlkF8FYzyS0kxnkIq_DjeKyWkxtaPKK3dpkriDcZ9hcjYIw'
             headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
 
             req = urllib.request.Request(url, body, headers)
