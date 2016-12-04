@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "nuvi-149216",
+  "private_key_id": "fa7a03c3a2967492b6f523e87b01d2fd37fbc839",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDZ1H1poWihUnui\nDlVMAUb6bzJTLBu9urzza3D7VC6mQ1cf18d2W8lepLN5xBegDTpirl5apLdTf5aU\niMlSKhJzbL6r2DX9oWz45rIMI/5ZfE971gD5W+D29QdyAgs7qdCHBLLWv619anLD\nxU77tFKtJoiw2oTE4WM+JQ7Ny9DNxFlYqg3Wodn4/I98TlL/gV2n19N7z0XDXnAM\nC+v36jlSZbQWAIvECrCFZGa589U0yNLe3PivS+VGJbaiqXE2YvrpxpwCCNyc3VNS\nMcMdrSsp+8yXNQo0Etv1LxVTUSbl21dOEfAWRcP255qsto72fxj3LHK35y3qaGTo\nfnt6fF3dAgMBAAECggEAU6tX5Lv36Yc6L9wbjU8sSUNu7B2UJkNVEpbhVdhW9swE\n6hlC50aISY8v1QSqInMSSxc47M46EJuAZltIIQRCBA3wCyfITTy1E8Hg/+LPbuXd\nze48f4t4FMO3cWYxlGA81a/LVctYQ0UhAeuG1A3Gd/XGKVA2ET2Vlig70HaKJI6i\nGrXHNC1RjqQXmhr3v7RNSSNGePr8PnEXgTqO/Axf/yPLqX6ERNkgTWWdc0En7jDx\nj/ltqvKpNpDOC5yARC2bWzrl0PlMdUAKWrMtswI4s0M9TTwpv1gHhyGiu90+90PU\nQf4mucNnVfDyTDFy6fufXZsEi24TnaGTtFPt49SBLQKBgQD6sXaFE5uFCfkS/haH\nWbZqFY2O/8LZuSptI6C0Kzf1pT1AHcMT7IuBWmfsUzVDtGnCklstek0+yUN+lURG\nt2fO3Qaha0DrMooEYmzYwadk9BCa4qHmhIXxiiQtqHcUK3spvZVa1xtOcz41reaD\n7zCgo/x29XP19/6g/HFKLlxD0wKBgQDecO/31b3gOji4yWgIEZcd8Z1OdVeSwu5W\n/LJH+SoaT7Dr1gxKTGm5jQW0GunbzBXisvdRT18TvOGFbcRlR5vbXZsk3Yzfmkz3\nbfqgm4COHCt7FaY3wWPnJFJEPyANVTsNtGwFAGr+llHxhytqhFYs0CsR6iVenWSi\n7C/9pfW5jwKBgQDA+2+zTb7AkUbN2g9ZrjQAQgsw8635kNMaJP0G9OYlEUivXLnZ\nUpSpxQCPKhaswetQPv41ahqgpKpyfVGL5o/g7MC37iqRY9xfN612xsynqEJIGQJs\nw8OghqkHBNJ2EmrDXQ/mWATLRWe0RuRW2ABlCRfGM3lK9ddr8ij74+hexQKBgE+2\nDvgz+xfoJT1qx0Hk889CLwnXmOs5uWkoosaR7lmBZzgL+1mAqn5Yn8ubvWQLbWhQ\nk7nqhHqxO+uxmyhkEeD5WUhLsFjMlXoxShfVwaqrQ5WW+3qNbbx90pEsQdMlUMUn\ne3ILZUwYGANCWfeQtsTWUCjaTEvsgQy1MLlniHfXAoGBALCBAXWYpIg7qp7vczO4\nce4d7SQGSfGeWWMTJIWWIPJHoVHzKxQGt78fPoVOE8VTs9MdwDShtiBLjXhJGP3c\nDicnbleHoeD93uknfV5s8oNWaqeTtW5QidkCksDe8C073OnGjOk6zXzU0oxo3I1K\n7LOh92S998agv+RMRyozNCVQ\n-----END PRIVATE KEY-----\n",
+  "client_email": "tweetanalyzer-prod@nuvi-149216.iam.gserviceaccount.com",
+  "client_id": "111781802912654349802",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tweetanalyzer-prod%40nuvi-149216.iam.gserviceaccount.com"
+}
