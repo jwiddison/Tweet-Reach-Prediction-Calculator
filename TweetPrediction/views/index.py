@@ -49,7 +49,7 @@ def process_request(request):
             body = str.encode(json.dumps(data))
 
             url = 'https://language.googleapis.com/v1/documents:analyzeEntities'
-            api_key = 'ya29.El-qA511AD1edHurxlgb7GedlxleesLE2cQHxRjVRCufYDxrodc_pjzrkqnKkRq3U1czLG_esXimj_tLUYQ4JMuyQ3YfjIFwt7cGGAX0kNXbq8OiEubhjVY-dfr1Nkav3A'
+            api_key = 'ya29.El-uA_XL_trOwfwPTOa-npqNANiBJG7U86K71Iv4BYnxQN12Kn6bF2zld_vhrf1EUW-S_zvjALaTVWCpeKw1fAyaOVuRxjNGe8JH5-T4iceU09ADkoUC_ZUixBwDUPfPxg'
             headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
 
             try:
@@ -72,6 +72,17 @@ def process_request(request):
             consumer_good = types.count('CONSUMER_GOOD')
             other = types.count('OTHER')
 
+            total = unknown + person + location + organization + event+ art + consumer_good + other
+
+            unknown_a = unknown / total
+            person_a = person / total
+            location_a = location / total
+            organization_a = organization / total
+            event_a = event / total
+            art_a = art / total
+            consumer_good_a = consumer_good / total
+            other_a = other / total
+
             language = entities['language']
 
             print(types)
@@ -86,49 +97,38 @@ def process_request(request):
 
             #now hit the Microsoft API
             data = {
-                    "Inputs": {
-                            "input1":
-                            [
-                                {
-                                        'Lang': language,   
-                                        'Reach': "",   
-                                        'Stats': "1",   
-                                        'TopicReach': "1",   
-                                        'TopicSpread': "1",   
-                                        'RetweetCount': "1",   
-                                        'Likes': "1",   
-                                        'Klout': "1",   
-                                        'Sentiment': "1",      
-                                        'Network': "Twitter", 
-                                        'SourceName': "",   
-                                        'Lat': "1",   
-                                        'Long': "1",     
-                                        'Country': "United States",   
-                                        'State': "Utah", 
-                                        'StateCode': "",   
-                                        'City': "",   
-                                        'UserId': "",      
-                                        'Gender': "",   
-                                        'text': form.cleaned_data.get('tweet_text'),   
-                                        'weekday': "",   
-                                        'hour': "1",   
-                                        'day': "1",   
-                                        'polarity': polarity,   
-                                        'magnitude': magnitude,   
-                                        'UNKNOWN': unknown,   
-                                        'PERSON': person,   
-                                        'LOCATION': location,   
-                                        'ORGANIZATION': organization,   
-                                        'EVENT': event,   
-                                        'WORK_OF_ART': art,   
-                                        'CONSUMER_GOOD': consumer_good,   
-                                        'OTHER': other,   
-                                }
-                            ],
+                "Inputs": {
+                    "input1":
+                        [
+                            {
+                                'Lang': language,   
+                                'IsReshare': "false",   
+                                'RetweetCount': "1",   
+                                'Network': "Twitter",   
+                                'Country': "United States",   
+                                'State': "Utah",   
+                                'City': "Provo",   
+                                'Gender': "Male",   
+                                'weekday': "Monday",   
+                                'hour': "1",   
+                                'day': "1",   
+                                'polarity': polarity,   
+                                'magnitude': magnitude,   
+                                'UNKNOWN_AVG': unknown_a,   
+                                'PERSON_AVG': person_a,   
+                                'LOCATION_AVG': location_a,   
+                                'ORGANIZATION_AVG': organization_a,   
+                                'EVENT_AVG': event_a,   
+                                'WORK_OF_ART_AVG': art_a,   
+                                'CONSUMER_GOOD_AVG': consumer_good_a,   
+                                'OTHER_AVG': other_a,   
+                            }
+                        ],
                     },
                 "GlobalParameters":  {
                 }
             }
+
 
             body = str.encode(json.dumps(data))
 
