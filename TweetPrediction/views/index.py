@@ -33,7 +33,7 @@ def process_request(request):
             body = str.encode(json.dumps(data))
 
             url = 'https://language.googleapis.com/v1/documents:analyzeEntities'
-            api_key = 'ya29.El-uA_XL_trOwfwPTOa-npqNANiBJG7U86K71Iv4BYnxQN12Kn6bF2zld_vhrf1EUW-S_zvjALaTVWCpeKw1fAyaOVuRxjNGe8JH5-T4iceU09ADkoUC_ZUixBwDUPfPxg'
+            api_key = 'ya29.El-uA8NZJwFy48xjXSvyUYjgBJpF6KxppxXshS_bRjf5He8dK_htuzTaVkKWNE01Tk4Ba2vam_Lw5tDbCGWfL8nECTDtqCD85s7a9wRCyxpPc5vAzDiIILrFFJzbjcO0lQ'
             headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
 
             try:
@@ -84,6 +84,7 @@ def process_request(request):
                     "input1":
                         [
                             {
+<<<<<<< HEAD
                                 'Lang': language,
                                 'IsReshare': form.cleaned_data.get('is_reshare'),
                                 'RetweetCount': "1",
