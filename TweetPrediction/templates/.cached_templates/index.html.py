@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1481230361.181785
+_modified_time = 1481231344.84665
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - MISM - 1/Fall 2016/IS 415/NuviProject/TweetPrediction/templates/index.html'
 _template_uri = 'index.html'
@@ -29,13 +29,13 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        form = context.get('form', UNDEFINED)
-        result = context.get('result', UNDEFINED)
+        entities = context.get('entities', UNDEFINED)
         sentiment = context.get('sentiment', UNDEFINED)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        form = context.get('form', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
-        entities = context.get('entities', UNDEFINED)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        result = context.get('result', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
@@ -51,15 +51,15 @@ def render_body(context,**pageargs):
 def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        form = context.get('form', UNDEFINED)
-        result = context.get('result', UNDEFINED)
+        entities = context.get('entities', UNDEFINED)
         sentiment = context.get('sentiment', UNDEFINED)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        form = context.get('form', UNDEFINED)
         def content():
             return render_content(context)
-        entities = context.get('entities', UNDEFINED)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        result = context.get('result', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\n  <nav class="navbar navbar-fixed-top topnav" role="navigation">\n    <div class="container topnav">\n      <div class="navbar-header">\n        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">\n          <span class="sr-only">Toggle navigation</span>\n          <span class="icon-bar"></span>\n          <span class="icon-bar"></span>\n          <span class="icon-bar"></span>\n        </button>\n        <a class="navbar-brand topnav" href="#">Nuvi Project</a>\n      </div>\n      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">\n        <ul class="nav navbar-nav navbar-right">\n          <li><a href="#about">About</a></li>\n          <li><a href="#prediction">Prediction</a></li>\n          <li><a href="#dashboard">Dashboard</a></li>\n        </ul>\n      </div>\n    </div>\n  </nav>\n\n  <div class="intro-header">\n    <div class="container">\n      <div class="row">\n        <div class="col-md-12">\n          <div class="intro-message">\n            <h1>Nuvi Project</h1>\n            <h3>Put the text of your tweet in the field below to predict how many people will read it</h3>\n            <hr class="intro-divider">\n            <div class="row">\n              <div class="col-md-6 col-md-offset-3">\n                <form method="POST">\n                  ')
+        __M_writer('\n  <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">\n    <div class="container topnav">\n      <div class="navbar-header">\n        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">\n          <span class="sr-only">Toggle navigation</span>\n          <span class="icon-bar"></span>\n          <span class="icon-bar"></span>\n          <span class="icon-bar"></span>\n        </button>\n        <a class="navbar-brand topnav" href="#">Nuvi Project</a>\n      </div>\n      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">\n        <ul class="nav navbar-nav navbar-right">\n          <li><a href="#about">About</a></li>\n          <li><a href="#prediction">Prediction</a></li>\n          <li><a href="#dashboard">Dashboard</a></li>\n        </ul>\n      </div>\n    </div>\n  </nav>\n\n  <div class="intro-header">\n    <div class="container">\n      <div class="row">\n        <div class="col-md-12">\n          <div class="intro-message">\n            <h1>Nuvi Project</h1>\n            <h3>Put the text of your tweet in the field below to predict how many people will read it</h3>\n            <hr class="intro-divider">\n            <div class="row">\n              <div class="col-md-6 col-md-offset-3">\n                <form method="POST">\n                  ')
         __M_writer(str(form.as_p()))
         __M_writer('\n                  <input type="submit" class="btn btn-primary center-block" value="Predict Reach"/>\n                </form>\n                <p>Result: ')
         __M_writer(str(result))
@@ -81,6 +81,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/Users/Jordan/Documents/BYU/0 - MISM - 1/Fall 2016/IS 415/NuviProject/TweetPrediction/templates/index.html", "source_encoding": "utf-8", "uri": "index.html", "line_map": {"64": 36, "65": 39, "66": 39, "67": 40, "68": 40, "69": 41, "70": 41, "71": 63, "40": 1, "73": 79, "74": 79, "75": 97, "76": 101, "45": 152, "72": 63, "82": 76, "51": 3, "28": 0, "62": 3, "63": 36}}
+{"uri": "index.html", "filename": "/Users/Jordan/Documents/BYU/0 - MISM - 1/Fall 2016/IS 415/NuviProject/TweetPrediction/templates/index.html", "line_map": {"64": 36, "65": 39, "66": 39, "67": 40, "68": 40, "69": 41, "70": 41, "71": 63, "40": 1, "73": 79, "74": 79, "75": 97, "76": 101, "45": 152, "72": 63, "82": 76, "51": 3, "28": 0, "62": 3, "63": 36}, "source_encoding": "utf-8"}
 __M_END_METADATA
 """

@@ -84,7 +84,6 @@ def process_request(request):
                     "input1":
                         [
                             {
-<<<<<<< HEAD
                                 'Lang': language,
                                 'IsReshare': form.cleaned_data.get('is_reshare'),
                                 'RetweetCount': "1",
