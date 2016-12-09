@@ -5,11 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-<<<<<<< HEAD
 _modified_time = 1481258783.001205
-=======
-_modified_time = 1481258242.9716983
->>>>>>> 83589d846faa01f61173d1efcdc7af130826f225
 _enable_loop = True
 _template_filename = 'C:/Users/Sean/Desktop/NuviProject/TweetPrediction/templates/base.htm'
 _template_uri = 'base.htm'
@@ -18,7 +14,7 @@ import os, os.path, re, json
 _exports = ['content']
 
 
-from django_mako_plus import get_template_css, get_template_js 
+from django_mako_plus import get_template_css, get_template_js
 
 def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
@@ -41,15 +37,12 @@ def render_body(context,**pageargs):
         __M_writer('TweetPrediction/media/font-awesome/css/font-awesome.min.css" >\r\n    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato|Raleway:300,400,700,300italic,400italic,700italic" >\r\n  </head>\r\n  <body>\r\n    ')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
             context['self'].content(**pageargs)
-        
 
-<<<<<<< HEAD
+
         __M_writer('\n    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>\n    ')
-=======
         __M_writer('\r\n    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>\r\n    <script scr="')
         __M_writer(str(STATIC_URL))
         __M_writer('TweetPrediction/media/js/jquery.easing.min.js"></script>\r\n    ')
->>>>>>> 83589d846faa01f61173d1efcdc7af130826f225
         __M_writer(str( get_template_js(self, request, context) ))
         __M_writer('\r\n  </body>\r\n</html>\r\n')
         return ''
