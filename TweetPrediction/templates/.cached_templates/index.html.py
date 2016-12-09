@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1481258242.8808331
+_modified_time = 1481259022.8920884
 _enable_loop = True
 _template_filename = 'C:/Users/Sean/Desktop/NuviProject/TweetPrediction/templates/index.html'
 _template_uri = 'index.html'
@@ -29,13 +29,13 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        sentiment = context.get('sentiment', UNDEFINED)
+        result = context.get('result', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
-        form = context.get('form', UNDEFINED)
-        result = context.get('result', UNDEFINED)
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        form = context.get('form', UNDEFINED)
         entities = context.get('entities', UNDEFINED)
+        sentiment = context.get('sentiment', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
@@ -51,13 +51,13 @@ def render_body(context,**pageargs):
 def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        sentiment = context.get('sentiment', UNDEFINED)
+        result = context.get('result', UNDEFINED)
         def content():
             return render_content(context)
-        form = context.get('form', UNDEFINED)
-        result = context.get('result', UNDEFINED)
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        form = context.get('form', UNDEFINED)
         entities = context.get('entities', UNDEFINED)
+        sentiment = context.get('sentiment', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n  <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">\r\n    <div class="container topnav">\r\n      <div class="navbar-header">\r\n        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">\r\n          <span class="sr-only">Toggle navigation</span>\r\n          <span class="icon-bar"></span>\r\n          <span class="icon-bar"></span>\r\n          <span class="icon-bar"></span>\r\n        </button>\r\n        <a class="navbar-brand topnav" href="#"><img src="')
         __M_writer(str(STATIC_URL))
@@ -86,6 +86,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"uri": "index.html", "line_map": {"64": 13, "65": 30, "66": 30, "67": 32, "68": 36, "69": 36, "70": 39, "71": 39, "72": 40, "73": 40, "74": 41, "75": 41, "76": 63, "77": 63, "78": 79, "79": 79, "80": 97, "81": 101, "87": 81, "28": 0, "40": 1, "45": 152, "51": 3, "62": 3, "63": 13}, "filename": "C:/Users/Sean/Desktop/NuviProject/TweetPrediction/templates/index.html", "source_encoding": "utf-8"}
+{"uri": "index.html", "source_encoding": "utf-8", "filename": "C:/Users/Sean/Desktop/NuviProject/TweetPrediction/templates/index.html", "line_map": {"64": 13, "65": 30, "66": 30, "67": 32, "68": 36, "69": 36, "70": 39, "71": 39, "72": 40, "73": 40, "74": 41, "75": 41, "76": 63, "77": 63, "78": 79, "79": 79, "80": 97, "81": 101, "87": 81, "28": 0, "40": 1, "45": 152, "51": 3, "62": 3, "63": 13}}
 __M_END_METADATA
 """
