@@ -1,5 +1,6 @@
 import json
 import os
+import datetime
 from NuviProject.settings import BASE_DIR
 import urllib.request
 from .. import dmp_render_to_string, dmp_render
@@ -62,6 +63,7 @@ def process_request(request):
                 total = 1
 
             textProperties = {}
+            tweetProperties = {}
 
             textProperties['unknown_a'] = unknown / total
             textProperties['person_a'] = person / total
@@ -73,7 +75,6 @@ def process_request(request):
             textProperties['other_a'] = other / total
 
             textProperties['language'] = entities['language']
-            textProperties['is_reshare'] = form.cleaned_data.get('is_reshare')
 
             request2 = service.documents().analyzeSentiment(body=data)
             sentiment = request2.execute()
@@ -82,8 +83,17 @@ def process_request(request):
             textProperties['magnitude'] = sentiment['magnitude']
             textProperties['polarity'] = sentiment['score']
 
+            tweetProperties['is_reshare'] = form.cleaned_data.get('is_reshare')
+            dayInt = datetime.datetime.today().weekday()
+            tweetProperties['weekday'] = getDayName(dayInt)
+
+            tweetProperties['hour'] = datetime.datetime.now().hour
+            tweetProperties['day'] = datetime.datetime.today().day
+
+            print(tweetProperties)
+
             #now hit the Microsoft API
-            result = hitMicrosoftAPI(textProperties)
+            result = hitMicrosoftAPI(textProperties, tweetProperties)
             
     template_vars = {
         'form': form,
@@ -102,23 +112,23 @@ class PredictionForm(forms.Form):
         return self.cleaned_data
 
 
-def hitMicrosoftAPI(dictTextProperties):
+def hitMicrosoftAPI(dictTextProperties, dictTweetProperties):
     data = {
         "Inputs": {
             "input1":
                 [
                     {
                         'Lang': dictTextProperties['language'],
-                        'IsReshare': dictTextProperties['is_reshare'],
+                        'IsReshare': dictTweetProperties['is_reshare'],
                         'RetweetCount': "1",
                         'Network': "Twitter",
                         'Country': "United States",
                         'State': "Utah",
                         'City': "Provo",
                         'Gender': "Male",
-                        'weekday': "Monday",
-                        'hour': "1",
-                        'day': "1",
+                        'weekday': dictTweetProperties['weekday'],
+                        'hour': dictTweetProperties['hour'],
+                        'day': dictTweetProperties['day'],
                         'polarity': dictTextProperties['polarity'],
                         'magnitude': dictTextProperties['magnitude'],
                         'UNKNOWN_AVG': dictTextProperties['unknown_a'],
@@ -159,3 +169,20 @@ def hitMicrosoftAPI(dictTextProperties):
         print(error.info())
         print(json.loads(error.read().decode("utf8", 'ignore')))
         return error.info()
+
+def getDayName(dayInt):
+    if dayInt == 0:
+        return 'Monday'
+    elif dayInt == 1:
+        return 'Tuesday'
+    elif dayInt == 2:
+        return 'Wednesday'
+    elif dayInt == 3:
+        return 'Thursday'
+    elif dayInt == 4:
+        return 'Friday'
+    elif dayInt == 5:
+        return 'Saturday'
+    elif dayInt == 6:
+        return 'Sunday'
+
