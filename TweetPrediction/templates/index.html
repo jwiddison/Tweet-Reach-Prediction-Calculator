@@ -28,7 +28,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="intro-message">
-            <img src="${STATIC_URL}TweetPrediction/media/pics/nuvi.jpg" class="img-responsive center-block"/>
+            <img src="${STATIC_URL}TweetPrediction/media/pics/twitter.svg" class="img-responsive center-block" style="margin-top:20px;"/>
             <hr class="intro-divider">
             <div class="row">
               <div class="col-md-6 col-md-offset-3">
@@ -36,8 +36,8 @@
                   ${form.as_p()}
                   <input type="submit" class="btn btn-primary center-block" value="Predict Reach"/>
                 </form>
-                <p>${result}</p>
-                <p>${ reccomendation }</p>
+                <p class="result">${result}</p>
+                <p class="result">${reccomendation}</p>
               </div>
             </div>
           </div>
@@ -87,7 +87,11 @@
           <hr class="section-heading-spacer" />
           <div class="clearfix"></div>
           <h2 class="section-heading">Tweet Analytics</h2>
-          <div class='tableauPlaceholder' id='viz1481315714488' style='position: relative'><noscript><a href='#'><img alt='Retweet Stats ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;RK&#47;RKPN7QBYM&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='path' value='shared&#47;RKPN7QBYM' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;RK&#47;RKPN7QBYM&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1481315714488');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1004px';vizElement.style.height='869px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+          <div style="text-align: center">
+            <div style="display: inline-block;">
+              <div class='tableauPlaceholder' id='viz1481315714488' style='position: relative'><noscript><a href='#'><img alt='Retweet Stats ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;RK&#47;RKPN7QBYM&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='path' value='shared&#47;RKPN7QBYM' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;RK&#47;RKPN7QBYM&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1481315714488');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1004px';vizElement.style.height='869px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -96,18 +100,9 @@
   <div class="banner">
     <div class="container">
       <div class="row">
+        <p class="copyright text-muted small white">Copyright &copy; 2016. All Rights Reserved</p>
       </div>
     </div>
   </div>
-
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <p class="copyright text-muted small">Copyright &copy; 2016. All Rights Reserved</p>
-        </div>
-      </div>
-    </div>
-  </footer>
 
 </%block>

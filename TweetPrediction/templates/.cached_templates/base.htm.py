@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1481315859.966558
+_modified_time = 1481322926.132896
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - MISM - 1/Fall 2016/IS 415/NuviProject/TweetPrediction/templates/base.htm'
 _template_uri = 'base.htm'
@@ -21,14 +21,14 @@ def render_body(context,**pageargs):
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         request = context.get('request', UNDEFINED)
+        self = context.get('self', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        self = context.get('self', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n<!DOCTYPE html>\n<html>\n  <meta charset="UTF-8">\n  <head>\n    <title>Nuvi Tweet Prediction</title>\n    <link rel="icon" type="img/ico" href="')
         __M_writer(str(STATIC_URL))
-        __M_writer('TweetPrediction/media/pics/nuvi-favicon.ico">\n    <meta charset="utf-8">\n    <meta http-equiv="X-UA-Compatible" content="IE=edge">\n    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">\n    <meta name="HandheldFriendly" content="True">\n    <meta name="MobileOptimized" content="320">\n    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, user-scalable=0">\n    <meta name="apple-mobile-web-app-capable" content="yes">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n\n    <!-- CSS -->\n    <link rel="stylesheet" type="text/css" href="')
+        __M_writer('TweetPrediction/media/pics/nuvi-favicon.ico">\n    <meta charset="utf-8">\n    <meta http-equiv="X-UA-Compatible" content="IE=edge">\n    <meta http-equiv="Content-Type" content="text/html">\n    <meta name="HandheldFriendly" content="True">\n    <meta name="MobileOptimized" content="320">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=0">\n    <meta name="apple-mobile-web-app-capable" content="yes">\n\n    <!-- CSS -->\n    <link rel="stylesheet" type="text/css" href="')
         __M_writer(str( STATIC_URL ))
         __M_writer('TweetPrediction/media/bootstrap/css/bootstrap.min.css" />\n    <link rel="stylesheet" type="text/css" href="')
         __M_writer(str( STATIC_URL ))
@@ -64,6 +64,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"line_map": {"32": 18, "33": 18, "34": 19, "35": 19, "36": 20, "37": 20, "38": 22, "39": 22, "44": 26, "45": 28, "46": 28, "47": 29, "48": 29, "17": 1, "19": 0, "54": 26, "65": 54, "29": 1, "30": 7, "31": 7}, "source_encoding": "utf-8", "uri": "base.htm", "filename": "/Users/Jordan/Documents/BYU/0 - MISM - 1/Fall 2016/IS 415/NuviProject/TweetPrediction/templates/base.htm"}
+{"uri": "base.htm", "filename": "/Users/Jordan/Documents/BYU/0 - MISM - 1/Fall 2016/IS 415/NuviProject/TweetPrediction/templates/base.htm", "line_map": {"32": 17, "33": 17, "34": 18, "35": 18, "36": 19, "37": 19, "38": 21, "39": 21, "44": 25, "45": 27, "46": 27, "47": 28, "48": 28, "17": 1, "19": 0, "54": 25, "65": 54, "29": 1, "30": 7, "31": 7}, "source_encoding": "utf-8"}
 __M_END_METADATA
 """
