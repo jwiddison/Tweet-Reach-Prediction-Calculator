@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1481300354.6602173
+_modified_time = 1481304928.3105948
 _enable_loop = True
 _template_filename = 'C:/Users/Sean/Desktop/NuviProject/TweetPrediction/templates/index.html'
 _template_uri = 'index.html'
@@ -29,11 +29,12 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        result = context.get('result', UNDEFINED)
+        reccomendation = context.get('reccomendation', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         form = context.get('form', UNDEFINED)
-        result = context.get('result', UNDEFINED)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
@@ -49,11 +50,12 @@ def render_body(context,**pageargs):
 def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
+        result = context.get('result', UNDEFINED)
+        reccomendation = context.get('reccomendation', UNDEFINED)
         def content():
             return render_content(context)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         form = context.get('form', UNDEFINED)
-        result = context.get('result', UNDEFINED)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">\r\n    <div class="container">\r\n      <div class="navbar-header">\r\n        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">\r\n          <span class="sr-only">Toggle navigation</span>\r\n          <span class="icon-bar"></span>\r\n          <span class="icon-bar"></span>\r\n          <span class="icon-bar"></span>\r\n        </button>\r\n        <a class="navbar-brand"><img src="')
         __M_writer(str(STATIC_URL))
@@ -63,7 +65,13 @@ def render_content(context,**pageargs):
         __M_writer(str(form.as_p()))
         __M_writer('\r\n                  <input type="submit" class="btn btn-primary center-block" value="Predict Reach"/>\r\n                </form>\r\n                <p>Retweet Count: ')
         __M_writer(str(result))
-        __M_writer('</p>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <a name="about" class="page-scroll"></a>\r\n  <div class="content-section-a">\r\n    <div class="container">\r\n        <div class="row">\r\n          <div class="col-lg-5 col-sm-6">\r\n            <hr class="section-heading-spacer">\r\n            <div class="clearfix"></div>\r\n            <h2 class="section-heading">Reach Matters</h2>\r\n            <p class="lead">Your social media presence matters.  Use our free prediction calculator to predict the reach of your business\'s tweets.</p>\r\n          </div>\r\n          <div class="col-lg-5 col-lg-offset-2 col-sm-6">\r\n            <img class="img-responsive img-thumbnail" src="')
+        __M_writer('</p>\r\n                <p>If you want ')
+        __M_writer(str( reccomendation[1] ))
+        __M_writer(' retweets, consider posting ')
+        __M_writer(str( reccomendation[0] ))
+        __M_writer(' at ')
+        __M_writer(str(reccomendation[2]))
+        __M_writer('\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <a name="about" class="page-scroll"></a>\r\n  <div class="content-section-a">\r\n    <div class="container">\r\n        <div class="row">\r\n          <div class="col-lg-5 col-sm-6">\r\n            <hr class="section-heading-spacer">\r\n            <div class="clearfix"></div>\r\n            <h2 class="section-heading">Reach Matters</h2>\r\n            <p class="lead">Your social media presence matters.  Use our free prediction calculator to predict the reach of your business\'s tweets.</p>\r\n          </div>\r\n          <div class="col-lg-5 col-lg-offset-2 col-sm-6">\r\n            <img class="img-responsive img-thumbnail" src="')
         __M_writer(str( STATIC_URL ))
         __M_writer('TweetPrediction/media/pics/tablet_twitter.jpeg" alt="">\r\n          </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class="content-section-b">\r\n    <div class="container">\r\n      <div class="row">\r\n        <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">\r\n          <hr class="section-heading-spacer" />\r\n          <div class="clearfix"></div>\r\n          <h2 class="section-heading">Predictive Analytics</h2>\r\n          <p class="lead">Somebody needs to help me write something intelligent about the technology that we\'re using here.</p>\r\n        </div>\r\n        <div class="col-lg-5 col-sm-pull-6  col-sm-6">\r\n          <img class="img-responsive img-thumbnail" src="')
         __M_writer(str( STATIC_URL ))
@@ -75,6 +83,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/Sean/Desktop/NuviProject/TweetPrediction/templates/index.html", "source_encoding": "utf-8", "uri": "index.html", "line_map": {"64": 36, "65": 39, "66": 39, "67": 59, "68": 59, "69": 75, "38": 1, "28": 0, "43": 129, "76": 70, "70": 75, "49": 3, "58": 3, "59": 13, "60": 13, "61": 31, "62": 31, "63": 36}}
+{"source_encoding": "utf-8", "line_map": {"64": 31, "65": 36, "66": 36, "67": 39, "68": 39, "69": 40, "70": 40, "71": 40, "72": 40, "73": 40, "74": 40, "75": 60, "76": 60, "77": 76, "78": 76, "84": 78, "28": 0, "39": 1, "44": 130, "50": 3, "60": 3, "61": 13, "62": 13, "63": 31}, "filename": "C:/Users/Sean/Desktop/NuviProject/TweetPrediction/templates/index.html", "uri": "index.html"}
 __M_END_METADATA
 """
