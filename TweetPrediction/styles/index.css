@@ -7,10 +7,6 @@
   border-bottom: none;
 }
 
-.navbar-collapse > ul > li > a {
-  color:white;
-}
-
 .img-thumbnail, .btn-default, .navbar-default, .form-control, .btn-primary {
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }

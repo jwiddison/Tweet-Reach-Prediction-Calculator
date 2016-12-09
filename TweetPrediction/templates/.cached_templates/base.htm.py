@@ -5,7 +5,11 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
+<<<<<<< HEAD
+_modified_time = 1481258783.001205
+=======
 _modified_time = 1481258242.9716983
+>>>>>>> 83589d846faa01f61173d1efcdc7af130826f225
 _enable_loop = True
 _template_filename = 'C:/Users/Sean/Desktop/NuviProject/TweetPrediction/templates/base.htm'
 _template_uri = 'base.htm'
@@ -20,11 +24,11 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        self = context.get('self', UNDEFINED)
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        request = context.get('request', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
-        self = context.get('self', UNDEFINED)
-        request = context.get('request', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n<!DOCTYPE html>\r\n<html>\r\n  <meta charset="UTF-8">\r\n  <head>\r\n    <title>Nuvi Project</title>\r\n\r\n    <meta charset="utf-8">\r\n    <meta http-equiv="X-UA-Compatible" content="IE=edge">\r\n    <meta name="viewport" content="width=device-width, initial-scale=1">\r\n    <meta name="description" content="">\r\n    <meta name="author" content="">\r\n\r\n    <title>Landing Page - Start Bootstrap Theme</title>\r\n\r\n    <!-- CSS -->\r\n    <link rel="stylesheet" type="text/css" href="')
         __M_writer(str( STATIC_URL ))
@@ -39,9 +43,13 @@ def render_body(context,**pageargs):
             context['self'].content(**pageargs)
         
 
+<<<<<<< HEAD
+        __M_writer('\n    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>\n    ')
+=======
         __M_writer('\r\n    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>\r\n    <script scr="')
         __M_writer(str(STATIC_URL))
         __M_writer('TweetPrediction/media/js/jquery.easing.min.js"></script>\r\n    ')
+>>>>>>> 83589d846faa01f61173d1efcdc7af130826f225
         __M_writer(str( get_template_js(self, request, context) ))
         __M_writer('\r\n  </body>\r\n</html>\r\n')
         return ''
@@ -63,6 +71,10 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
+<<<<<<< HEAD
+{"line_map": {"32": 18, "33": 18, "34": 19, "35": 19, "36": 21, "37": 21, "42": 27, "43": 29, "44": 29, "17": 1, "50": 25, "19": 0, "62": 56, "56": 25, "29": 1, "30": 17, "31": 17}, "uri": "base.htm", "filename": "/Users/Jordan/Documents/BYU/0 - MISM - 1/Fall 2016/IS 415/NuviProject/TweetPrediction/templates/base.htm", "source_encoding": "utf-8"}
+=======
 {"uri": "base.htm", "line_map": {"32": 18, "33": 18, "34": 19, "35": 19, "36": 21, "37": 21, "64": 58, "42": 27, "43": 29, "44": 29, "45": 30, "46": 30, "17": 1, "19": 0, "52": 25, "58": 25, "29": 1, "30": 17, "31": 17}, "filename": "C:/Users/Sean/Desktop/NuviProject/TweetPrediction/templates/base.htm", "source_encoding": "utf-8"}
+>>>>>>> 83589d846faa01f61173d1efcdc7af130826f225
 __M_END_METADATA
 """
