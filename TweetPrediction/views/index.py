@@ -61,81 +61,30 @@ def process_request(request):
             if total == 0:
                 total = 1
 
-            unknown_a = unknown / total
-            person_a = person / total
-            location_a = location / total
-            organization_a = organization / total
-            event_a = event / total
-            art_a = art / total
-            consumer_good_a = consumer_good / total
-            other_a = other / total
+            textProperties = {}
 
-            language = entities['language']
+            textProperties['unknown_a'] = unknown / total
+            textProperties['person_a'] = person / total
+            textProperties['location_a'] = location / total
+            textProperties['organization_a'] = organization / total
+            textProperties['event_a'] = event / total
+            textProperties['art_a'] = art / total
+            textProperties['consumer_good_a'] = consumer_good / total
+            textProperties['other_a'] = other / total
 
+            textProperties['language'] = entities['language']
+            textProperties['is_reshare'] = form.cleaned_data.get('is_reshare')
 
             request2 = service.documents().analyzeSentiment(body=data)
             sentiment = request2.execute()
 
             sentiment = sentiment['documentSentiment']
-            magnitude = sentiment['magnitude']
-            polarity = sentiment['score']
+            textProperties['magnitude'] = sentiment['magnitude']
+            textProperties['polarity'] = sentiment['score']
 
             #now hit the Microsoft API
-            data = {
-                "Inputs": {
-                    "input1":
-                        [
-                            {
-                                'Lang': language,
-                                'IsReshare': form.cleaned_data.get('is_reshare'),
-                                'RetweetCount': "1",
-                                'Network': "Twitter",
-                                'Country': "United States",
-                                'State': "Utah",
-                                'City': "Provo",
-                                'Gender': "Male",
-                                'weekday': "Monday",
-                                'hour': "1",
-                                'day': "1",
-                                'polarity': polarity,
-                                'magnitude': magnitude,
-                                'UNKNOWN_AVG': unknown_a,
-                                'PERSON_AVG': person_a,
-                                'LOCATION_AVG': location_a,
-                                'ORGANIZATION_AVG': organization_a,
-                                'EVENT_AVG': event_a,
-                                'WORK_OF_ART_AVG': art_a,
-                                'CONSUMER_GOOD_AVG': consumer_good_a,
-                                'OTHER_AVG': other_a,
-                            }
-                        ],
-                    },
-                "GlobalParameters":  {
-                }
-            }
-
-
-            body = str.encode(json.dumps(data))
-
-            url = 'https://ussouthcentral.services.azureml.net/workspaces/4bb4313c768a46d6ba271a0fba4d5fcd/services/db557902b3c74f96a5fe3b009cb1eaf2/execute?api-version=2.0&format=swagger'
-            api_key = 'HQbjX/Pe7z+qMyv8VtY4xLiw8+muIR9hHIqnjfRoYxIZolCGnD0cvWDS8YpUj2b2NS9laQYDSNs5o9HHECgZeA=='
-            headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
-
-            req = urllib.request.Request(url, body, headers)
-
-            try:
-                response = urllib.request.urlopen(req)
-                result = response.read().decode('utf-8')
-                result = json.loads(result)
-                result = result["Results"]["output1"][0]["Scored Labels"]
-                result = float(result)
-                result = format(result, '.2f')
-            except urllib.error.HTTPError as error:
-                print("The request failed with status code: " + str(error.code))
-                # Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
-                print(error.info())
-                print(json.loads(error.read().decode("utf8", 'ignore')))
-
+            result = hitMicrosoftAPI(textProperties)
+            
     template_vars = {
         'form': form,
         'entities': entities,
@@ -151,3 +100,62 @@ class PredictionForm(forms.Form):
 
     def clean(self):
         return self.cleaned_data
+
+
+def hitMicrosoftAPI(dictTextProperties):
+    data = {
+        "Inputs": {
+            "input1":
+                [
+                    {
+                        'Lang': dictTextProperties['language'],
+                        'IsReshare': dictTextProperties['is_reshare'],
+                        'RetweetCount': "1",
+                        'Network': "Twitter",
+                        'Country': "United States",
+                        'State': "Utah",
+                        'City': "Provo",
+                        'Gender': "Male",
+                        'weekday': "Monday",
+                        'hour': "1",
+                        'day': "1",
+                        'polarity': dictTextProperties['polarity'],
+                        'magnitude': dictTextProperties['magnitude'],
+                        'UNKNOWN_AVG': dictTextProperties['unknown_a'],
+                        'PERSON_AVG': dictTextProperties['person_a'],
+                        'LOCATION_AVG': dictTextProperties['location_a'],
+                        'ORGANIZATION_AVG': dictTextProperties['organization_a'],
+                        'EVENT_AVG': dictTextProperties['event_a'],
+                        'WORK_OF_ART_AVG': dictTextProperties['art_a'],
+                        'CONSUMER_GOOD_AVG': dictTextProperties['consumer_good_a'],
+                        'OTHER_AVG': dictTextProperties['other_a'],
+                    }
+                ],
+            },
+        "GlobalParameters":  {
+        }
+    }
+
+
+    body = str.encode(json.dumps(data))
+
+    url = 'https://ussouthcentral.services.azureml.net/workspaces/4bb4313c768a46d6ba271a0fba4d5fcd/services/db557902b3c74f96a5fe3b009cb1eaf2/execute?api-version=2.0&format=swagger'
+    api_key = 'HQbjX/Pe7z+qMyv8VtY4xLiw8+muIR9hHIqnjfRoYxIZolCGnD0cvWDS8YpUj2b2NS9laQYDSNs5o9HHECgZeA=='
+    headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
+
+    req = urllib.request.Request(url, body, headers)
+
+    try:
+        response = urllib.request.urlopen(req)
+        result = response.read().decode('utf-8')
+        result = json.loads(result)
+        result = result["Results"]["output1"][0]["Scored Labels"]
+        result = float(result)
+        result = format(result, '.2f')
+        return result
+    except urllib.error.HTTPError as error:
+        print("The request failed with status code: " + str(error.code))
+        # Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
+        print(error.info())
+        print(json.loads(error.read().decode("utf8", 'ignore')))
+        return error.info()
