@@ -15,3 +15,13 @@
   height:50px;
   margin-top:-15px;
 }
+
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav>li>a:focus {
+    color: #0ccbe0;
+    font-weight:200;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    color: #777;
+    background-color: transparent;
+}
