@@ -22,22 +22,6 @@ def process_request(request):
         form = PredictionForm(request.POST)
         if form.is_valid():
 
-            # data = {
-            #     "Inputs": {
-            #             "input1":
-            #             [
-            #                 {
-            #                     'tweet_text': form.cleaned_data.get('tweet_text'),
-            #                 }
-            #             ],
-            #     },
-            #     "GlobalParameters":  {
-            #     }
-            # }
-            # TimeMs  HourMs  DayMs   AggregatedMs    Lang    IsReshare   Reach   Stats   TopicReach  TopicSpread RetweetCount    Likes   Klout   Sentiment   Network SourceName  Lat Long    Country State   StateCode   City    UserId  Gender  text
-
-            # is_reshare = forms.cleaned_data.get('is_reshare')
-
             data = {
                 "document":{
                     "type":"PLAIN_TEXT",
@@ -59,7 +43,6 @@ def process_request(request):
 
             entities = hitGoogleAPI(req)
             types = []
-
             for ent in entities['entities']:
                 types.append(ent['type'])
 
@@ -101,27 +84,27 @@ def process_request(request):
                     "input1":
                         [
                             {
-                                'Lang': language,   
-                                'IsReshare': "true",   
-                                'RetweetCount': "1",   
-                                'Network': "Twitter",   
-                                'Country': "United States",   
-                                'State': "Utah",   
-                                'City': "Provo",   
-                                'Gender': "Male",   
-                                'weekday': "Monday",   
-                                'hour': "1",   
-                                'day': "1",   
-                                'polarity': polarity,   
-                                'magnitude': magnitude,   
-                                'UNKNOWN_AVG': unknown_a,   
-                                'PERSON_AVG': person_a,   
-                                'LOCATION_AVG': location_a,   
-                                'ORGANIZATION_AVG': organization_a,   
-                                'EVENT_AVG': event_a,   
-                                'WORK_OF_ART_AVG': art_a,   
-                                'CONSUMER_GOOD_AVG': consumer_good_a,   
-                                'OTHER_AVG': other_a,   
+                                'Lang': language,
+                                'IsReshare': form.cleaned_data.get('is_reshare'),
+                                'RetweetCount': "1",
+                                'Network': "Twitter",
+                                'Country': "United States",
+                                'State': "Utah",
+                                'City': "Provo",
+                                'Gender': "Male",
+                                'weekday': "Monday",
+                                'hour': "1",
+                                'day': "1",
+                                'polarity': polarity,
+                                'magnitude': magnitude,
+                                'UNKNOWN_AVG': unknown_a,
+                                'PERSON_AVG': person_a,
+                                'LOCATION_AVG': location_a,
+                                'ORGANIZATION_AVG': organization_a,
+                                'EVENT_AVG': event_a,
+                                'WORK_OF_ART_AVG': art_a,
+                                'CONSUMER_GOOD_AVG': consumer_good_a,
+                                'OTHER_AVG': other_a,
                             }
                         ],
                     },
@@ -133,7 +116,7 @@ def process_request(request):
             body = str.encode(json.dumps(data))
 
             url = 'https://ussouthcentral.services.azureml.net/workspaces/4bb4313c768a46d6ba271a0fba4d5fcd/services/db557902b3c74f96a5fe3b009cb1eaf2/execute?api-version=2.0&format=swagger'
-            api_key = 'HQbjX/Pe7z+qMyv8VtY4xLiw8+muIR9hHIqnjfRoYxIZolCGnD0cvWDS8YpUj2b2NS9laQYDSNs5o9HHECgZeA==' 
+            api_key = 'HQbjX/Pe7z+qMyv8VtY4xLiw8+muIR9hHIqnjfRoYxIZolCGnD0cvWDS8YpUj2b2NS9laQYDSNs5o9HHECgZeA=='
             headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
 
             req = urllib.request.Request(url, body, headers)
@@ -148,7 +131,7 @@ def process_request(request):
 
                 # Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
                 print(error.info())
-                print(json.loads(error.read().decode("utf8", 'ignore'))) 
+                print(json.loads(error.read().decode("utf8", 'ignore')))
 
     template_vars = {
         'form': form,
@@ -161,7 +144,7 @@ def process_request(request):
 
 class PredictionForm(forms.Form):
     tweet_text = forms.CharField(label='',required=True, widget=forms.TextInput(attrs={'placeholder': 'Tweet Text', 'class': 'form-control'}))
-    # is_reshare = forms.BooleanField(label = 'Is this a reshare?', required=True)
+    is_reshare = forms.BooleanField(label = 'Are you retweeting this?', required=True, widget=forms.CheckboxInput())
 
     def clean(self):
         return self.cleaned_data
@@ -178,3 +161,23 @@ def hitGoogleAPI(req):
         print(error.info())
         print(json.loads(error.read().decode("utf8", 'ignore')))
         return error.info()
+
+
+
+## NOTES:
+
+            # data = {
+            #     "Inputs": {
+            #             "input1":
+            #             [
+            #                 {
+            #                     'tweet_text': form.cleaned_data.get('tweet_text'),
+            #                 }
+            #             ],
+            #     },
+            #     "GlobalParameters":  {
+            #     }
+            # }
+            # TimeMs  HourMs  DayMs   AggregatedMs    Lang    IsReshare   Reach   Stats   TopicReach  TopicSpread RetweetCount    Likes   Klout   Sentiment   Network SourceName  Lat Long    Country State   StateCode   City    UserId  Gender  text
+
+            # is_reshare = forms.cleaned_data.get('is_reshare')
