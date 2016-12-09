@@ -121,7 +121,7 @@ def process_request(request):
                 response = urllib.request.urlopen(req)
 
                 result = response.read()
-                print(result)
+                # print(result)
             except urllib.error.HTTPError as error:
                 print("The request failed with status code: " + str(error.code))
 
@@ -144,36 +144,3 @@ class PredictionForm(forms.Form):
 
     def clean(self):
         return self.cleaned_data
-
-def hitGoogleAPI(req):
-    try:
-        response = urllib.request.urlopen(req)
-        string = response.read().decode('utf-8')
-        result = json.loads(string)
-        return result
-    except urllib.error.HTTPError as error:
-        print("The request failed with status code: " + str(error.code))
-        # Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
-        print(error.info())
-        print(json.loads(error.read().decode("utf8", 'ignore')))
-        return error.info()
-
-
-
-## NOTES:
-
-            # data = {
-            #     "Inputs": {
-            #             "input1":
-            #             [
-            #                 {
-            #                     'tweet_text': form.cleaned_data.get('tweet_text'),
-            #                 }
-            #             ],
-            #     },
-            #     "GlobalParameters":  {
-            #     }
-            # }
-            # TimeMs  HourMs  DayMs   AggregatedMs    Lang    IsReshare   Reach   Stats   TopicReach  TopicSpread RetweetCount    Likes   Klout   Sentiment   Network SourceName  Lat Long    Country State   StateCode   City    UserId  Gender  text
-
-            # is_reshare = forms.cleaned_data.get('is_reshare')
