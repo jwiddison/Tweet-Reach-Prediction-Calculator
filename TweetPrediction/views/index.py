@@ -125,7 +125,11 @@ def process_request(request):
 
             try:
                 response = urllib.request.urlopen(req)
-                result = response.read()
+                result = response.read().decode('utf-8')
+                result = json.loads(result)
+                result = result["Results"]["output1"][0]["Scored Labels"]
+                result = float(result)
+                result = format(result, '.2f')
             except urllib.error.HTTPError as error:
                 print("The request failed with status code: " + str(error.code))
                 # Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure

@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1481299539.9462857
+_modified_time = 1481300000.877512
 _enable_loop = True
 _template_filename = 'C:/Users/Sean/Desktop/NuviProject/TweetPrediction/templates/index.html'
 _template_uri = 'index.html'
@@ -29,13 +29,13 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        form = context.get('form', UNDEFINED)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        entities = context.get('entities', UNDEFINED)
+        result = context.get('result', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
         sentiment = context.get('sentiment', UNDEFINED)
-        entities = context.get('entities', UNDEFINED)
-        form = context.get('form', UNDEFINED)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        result = context.get('result', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
@@ -51,13 +51,13 @@ def render_body(context,**pageargs):
 def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
+        form = context.get('form', UNDEFINED)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        entities = context.get('entities', UNDEFINED)
+        result = context.get('result', UNDEFINED)
         def content():
             return render_content(context)
         sentiment = context.get('sentiment', UNDEFINED)
-        entities = context.get('entities', UNDEFINED)
-        form = context.get('form', UNDEFINED)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        result = context.get('result', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">\r\n    <div class="container">\r\n      <div class="navbar-header">\r\n        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">\r\n          <span class="sr-only">Toggle navigation</span>\r\n          <span class="icon-bar"></span>\r\n          <span class="icon-bar"></span>\r\n          <span class="icon-bar"></span>\r\n        </button>\r\n        <a class="navbar-brand"><img src="')
         __M_writer(str(STATIC_URL))
@@ -65,7 +65,7 @@ def render_content(context,**pageargs):
         __M_writer(str(STATIC_URL))
         __M_writer('TweetPrediction/media/pics/nuvi.jpg" class="img-responsive center-block"/>\r\n            <hr class="intro-divider">\r\n            <div class="row">\r\n              <div class="col-md-6 col-md-offset-3">\r\n                <form method="POST">\r\n                  ')
         __M_writer(str(form.as_p()))
-        __M_writer('\r\n                  <input type="submit" class="btn btn-primary center-block" value="Predict Reach"/>\r\n                </form>\r\n                <p>')
+        __M_writer('\r\n                  <input type="submit" class="btn btn-primary center-block" value="Predict Reach"/>\r\n                </form>\r\n                <p>Retweet Count: ')
         __M_writer(str(result))
         __M_writer('</p>\r\n                <p>')
         __M_writer(str(entities))
@@ -83,6 +83,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/Sean/Desktop/NuviProject/TweetPrediction/templates/index.html", "uri": "index.html", "source_encoding": "utf-8", "line_map": {"64": 13, "65": 31, "66": 31, "67": 36, "68": 36, "69": 39, "70": 39, "71": 40, "72": 40, "73": 41, "74": 41, "75": 61, "76": 61, "77": 77, "78": 77, "84": 78, "28": 0, "40": 1, "45": 131, "51": 3, "62": 3, "63": 13}}
+{"line_map": {"64": 13, "65": 31, "66": 31, "67": 36, "68": 36, "69": 39, "70": 39, "71": 40, "72": 40, "73": 41, "74": 41, "75": 61, "76": 61, "77": 77, "78": 77, "84": 78, "28": 0, "40": 1, "45": 131, "51": 3, "62": 3, "63": 13}, "source_encoding": "utf-8", "uri": "index.html", "filename": "C:/Users/Sean/Desktop/NuviProject/TweetPrediction/templates/index.html"}
 __M_END_METADATA
 """
