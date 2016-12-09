@@ -95,10 +95,14 @@ def process_request(request):
             result = hitMicrosoftAPI(textProperties, tweetProperties)
 
             #hit Microsoft API 12 times to find better time
-            reccomendation_componenets = findBestTime(textProperties, tweetProperties)
-            reccomendation = "If you want an average of " + str(reccomendation_componenets[1]) + " retweets, consider posting " + str(reccomendation[0]) + "at " + str(reccomendation[2])
+            reccomendation_components = findBestTime(textProperties, tweetProperties)
+            print(reccomendation_components)
+            reccomendation = "If you want an average of " + str(reccomendation_components[1]) + " retweets, consider posting " + str(reccomendation_components[0]) + " at " + str(reccomendation_components[2])
             
-            if reccomendation[0] == 'Today' and hour == datetime.datetime.now().hour:
+            print(reccomendation_components[0], 'Today')
+            print(reccomendation_components[2], hourToTime(datetime.datetime.now().hour))
+
+            if reccomendation_components[0] == 'Today' and reccomendation_components[2] == hourToTime(datetime.datetime.now().hour):
                 reccomendation = "You're in luck!  Tweet now for the max amount of tweets."
 
     template_vars = {
@@ -195,7 +199,7 @@ def getDayName(dayInt):
 
 def hourToTime(hourInt):
     if hourInt == 0:
-        return "12:00pm (Noon)"
+        return "12:00am (Midnight)"
     elif hourInt == 1:
         return "1:00pm"
     elif hourInt == 2:
@@ -213,13 +217,13 @@ def hourToTime(hourInt):
     elif hourInt == 8:
         return "8:00pm"
     elif hourInt == 9:
-        return "9:00pm"
+        return "9:00am"
     elif hourInt == 10:
-        return "10:00pm"
+        return "10:00am"
     elif hourInt == 11:
-        return "11:00pm"
+        return "11:00am"
     elif hourInt == 12:
-        return "12:00am (Midnight)"
+        return "12:00pm (Noon)"
 
 def findBestTime(dictTextProperties, dictTweetProperties):
     bestTodayResult = float(0)
