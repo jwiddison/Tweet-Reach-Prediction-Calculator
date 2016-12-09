@@ -96,11 +96,9 @@ def process_request(request):
 
             #hit Microsoft API 12 times to find better time
             reccomendation_components = findBestTime(textProperties, tweetProperties)
-            print(reccomendation_components)
+
             reccomendation = "If you want an average of " + str(reccomendation_components[1]) + " retweets, consider posting " + str(reccomendation_components[0]) + " at " + str(reccomendation_components[2])
             
-            print(reccomendation_components[0], 'Today')
-            print(reccomendation_components[2], hourToTime(datetime.datetime.now().hour))
 
             if reccomendation_components[0] == 'Today' and reccomendation_components[2] == hourToTime(datetime.datetime.now().hour):
                 reccomendation = "You're in luck!  Tweet now for the max amount of tweets."
@@ -199,7 +197,7 @@ def getDayName(dayInt):
 
 def hourToTime(hourInt):
     if hourInt == 0:
-        return "12:00am (Midnight)"
+        return "12:00pm (Noon)"
     elif hourInt == 1:
         return "1:00pm"
     elif hourInt == 2:
@@ -223,7 +221,7 @@ def hourToTime(hourInt):
     elif hourInt == 11:
         return "11:00am"
     elif hourInt == 12:
-        return "12:00pm (Noon)"
+        return "12:00am (Midnight)"
 
 def findBestTime(dictTextProperties, dictTweetProperties):
     bestTodayResult = float(0)
@@ -242,7 +240,7 @@ def findBestTime(dictTextProperties, dictTweetProperties):
         dictTweetProperties['hour'] = hour
         result = hitMicrosoftAPI(dictTextProperties, dictTweetProperties)
 
-        print('hit for %s hour %s tweetcount: %s' % (dictTweetProperties['weekday'],dictTweetProperties['hour'], result))
+        # print('hit for %s hour %s tweetcount: %s' % (dictTweetProperties['weekday'],dictTweetProperties['hour'], result))
 
         if float(result) > bestTodayResult:
             bestTodayResult = float(result)
@@ -250,7 +248,7 @@ def findBestTime(dictTextProperties, dictTweetProperties):
 
         hour = hour + 3
 
-    print("best time today, tweetcount: %s, hour %s" % (bestTodayResult, bestTodayHour))
+    # print("best time today, tweetcount: %s, hour %s" % (bestTodayResult, bestTodayHour))
 
     #check every three hours for tomorrow and the day after
     hour = 0
@@ -263,7 +261,7 @@ def findBestTime(dictTextProperties, dictTweetProperties):
         dictTweetProperties['hour'] = hour
         result = hitMicrosoftAPI(dictTextProperties, dictTweetProperties)
 
-        print('hit for %s hour %s tweetcount: %s' % (dictTweetProperties['weekday'],dictTweetProperties['hour'], result))
+        # print('hit for %s hour %s tweetcount: %s' % (dictTweetProperties['weekday'],dictTweetProperties['hour'], result))
 
         if float(result) > bestTomorrowResult:
             bestTomorrowResult = float(result)
@@ -271,7 +269,7 @@ def findBestTime(dictTextProperties, dictTweetProperties):
 
         hour = hour + 3
 
-    print("best time tomorrow, tweetcount: %s, hour %s" % (bestTomorrowResult, bestTomorrowHour))
+    # print("best time tomorrow, tweetcount: %s, hour %s" % (bestTomorrowResult, bestTomorrowHour))
 
     hour = 0
     day = datetime.datetime.today().day + 2
@@ -283,7 +281,7 @@ def findBestTime(dictTextProperties, dictTweetProperties):
         dictTweetProperties['hour'] = hour
         result = hitMicrosoftAPI(dictTextProperties, dictTweetProperties)
 
-        print('hit for %s hour %s tweetcount: %s' % (dictTweetProperties['weekday'],dictTweetProperties['hour'], result))
+        # print('hit for %s hour %s tweetcount: %s' % (dictTweetProperties['weekday'],dictTweetProperties['hour'], result))
 
         if float(result) > bestDay2Result:
             bestDay2Result = float(result)
@@ -291,12 +289,12 @@ def findBestTime(dictTextProperties, dictTweetProperties):
 
         hour = hour + 3
 
-    print("best time day 2, tweetcount: %s, hour: %s" % (bestDay2Result, bestDay2Hour))
+    # print("best time day 2, tweetcount: %s, hour: %s" % (bestDay2Result, bestDay2Hour))
 
 
-    print("best time today, tweetcount: %s, hour %s" % (bestTodayResult, bestTodayHour))
-    print("best time tomorrow, tweetcount: %s, hour %s" % (bestTomorrowResult, bestTomorrowHour))
-    print("best time day 2, tweetcount: %s, hour: %s" % (bestDay2Result, bestDay2Hour))
+    # print("best time today, tweetcount: %s, hour %s" % (bestTodayResult, bestTodayHour))
+    # print("best time tomorrow, tweetcount: %s, hour %s" % (bestTomorrowResult, bestTomorrowHour))
+    # print("best time day 2, tweetcount: %s, hour: %s" % (bestDay2Result, bestDay2Hour))
 
     if bestTodayResult > bestTomorrowResult:
         if bestTodayResult > bestDay2Result:
