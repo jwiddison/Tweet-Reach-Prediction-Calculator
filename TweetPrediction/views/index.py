@@ -96,7 +96,7 @@ def process_request(request):
 
             #hit Microsoft API 12 times to find better time
             reccomendation_componenets = findBestTime(textProperties, tweetProperties)
-            reccomendation = "If you want an average of " + reccomendation[1] + "retweets, consider posting " + reccomendation[0] + "at " + reccomendation[2]
+            reccomendation = "If you want an average of " + str(reccomendation_componenets[1]) + " retweets, consider posting " + str(reccomendation[0]) + "at " + str(reccomendation[2])
             
             if reccomendation[0] == 'Today' and hour == datetime.datetime.now().hour:
                 reccomendation = "You're in luck!  Tweet now for the max amount of tweets."
