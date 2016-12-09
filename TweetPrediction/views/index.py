@@ -8,11 +8,13 @@ from django.conf import settings
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django_mako_plus import view_function
+from oauth2client.client import GoogleCredentials
+from googleapiclient.discovery import build
 
 @view_function
 def process_request(request):
 
-    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = os.path.join(BASE_DIR, 'google.json')
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = os.path.join(BASE_DIR, 'Nuvi-eb856e7859e7.json')
 
     form = PredictionForm()
     entities = ''
@@ -32,16 +34,12 @@ def process_request(request):
 
             body = str.encode(json.dumps(data))
 
-            url = 'https://language.googleapis.com/v1/documents:analyzeEntities'
-            api_key = 'ya29.El-uA8NZJwFy48xjXSvyUYjgBJpF6KxppxXshS_bRjf5He8dK_htuzTaVkKWNE01Tk4Ba2vam_Lw5tDbCGWfL8nECTDtqCD85s7a9wRCyxpPc5vAzDiIILrFFJzbjcO0lQ'
-            headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
+            credentials = GoogleCredentials.get_application_default()
+            service = build('language', 'v1', credentials=credentials)
 
-            try:
-                req = urllib.request.Request(url, body, headers)
-            except:
-                print("Google Authentication Failed")
+            request = service.documents().analyzeEntities(body=data)
+            entities = request.execute()
 
-            entities = hitGoogleAPI(req)
             types = []
             for ent in entities['entities']:
                 types.append(ent['type'])
@@ -67,13 +65,11 @@ def process_request(request):
             other_a = other / total
 
             language = entities['language']
+            
 
-            print(types)
+            request2 = service.documents().analyzeSentiment(body=data)
+            sentiment = request2.execute()
 
-            url = 'https://language.googleapis.com/v1/documents:analyzeSentiment'
-            req2 = urllib.request.Request(url, body, headers)
-
-            sentiment = hitGoogleAPI(req2)
             sentiment = sentiment['documentSentiment']
             magnitude = sentiment['magnitude']
             polarity = sentiment['score']
