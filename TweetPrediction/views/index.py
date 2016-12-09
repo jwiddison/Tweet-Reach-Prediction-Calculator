@@ -15,9 +15,9 @@ def process_request(request):
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = os.path.join(BASE_DIR, 'google.json')
 
     form = PredictionForm()
-    entities = 'The entities will display here'
-    sentiment = 'The sentiment will display here'
-    result = 'The result will display here'
+    entities = ''
+    sentiment = ''
+    result = ''
     if request.method == 'POST':
         form = PredictionForm(request.POST)
         if form.is_valid():
@@ -144,7 +144,7 @@ def process_request(request):
 
 class PredictionForm(forms.Form):
     tweet_text = forms.CharField(label='',required=True, widget=forms.TextInput(attrs={'placeholder': 'Tweet Text', 'class': 'form-control'}))
-    is_reshare = forms.BooleanField(label = 'Are you retweeting this?', required=True, widget=forms.CheckboxInput())
+    is_reshare = forms.BooleanField(label = 'Are you retweeting this?', required=False, widget=forms.CheckboxInput())
 
     def clean(self):
         return self.cleaned_data
