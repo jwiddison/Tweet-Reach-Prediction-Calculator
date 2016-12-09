@@ -95,9 +95,12 @@ def process_request(request):
             result = hitMicrosoftAPI(textProperties, tweetProperties)
 
             #hit Microsoft API 12 times to find better time
-            reccomendation = findBestTime(textProperties, tweetProperties)
-            print(reccomendation)
+            reccomendation_componenets = findBestTime(textProperties, tweetProperties)
+            reccomendation = "If you want an average of " + reccomendation[1] + "retweets, consider posting " + reccomendation[0] + "at " + reccomendation[2]
             
+            if reccomendation[0] == 'Today' and hour == datetime.datetime.now().hour:
+                reccomendation = "You're in luck!  Tweet now for the max amount of tweets."
+
     template_vars = {
         'form': form,
         'entities': entities,
@@ -222,6 +225,9 @@ def findBestTime(dictTextProperties, dictTweetProperties):
     bestTodayResult = float(0)
     bestTomorrowResult = float(0)
     bestDay2Result = float(0)
+    bestTodayHour = 0
+    bestTomorrowHour = 0
+    bestDay2Hour = 0
 
     hour = dictTweetProperties['hour']
     weekday = dictTweetProperties['weekday']
