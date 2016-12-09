@@ -22,7 +22,7 @@ def process_request(request):
     sentiment = ''
     result = ''
     test = ''
-    reccomendation = ['','','']
+    reccomendation = ''
     if request.method == 'POST':
         form = PredictionForm(request.POST)
         if form.is_valid():
@@ -92,7 +92,7 @@ def process_request(request):
             tweetProperties['day'] = datetime.datetime.today().day
 
             #now hit the Microsoft API
-            result = hitMicrosoftAPI(textProperties, tweetProperties)
+            result = 'Retweet Count: ' + hitMicrosoftAPI(textProperties, tweetProperties)
 
             #hit Microsoft API 12 times to find better time
             reccomendation_components = findBestTime(textProperties, tweetProperties)
