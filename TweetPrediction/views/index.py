@@ -97,7 +97,7 @@ def process_request(request):
             #hit Microsoft API 12 times to find better time
             reccomendation = findBestTime(textProperties, tweetProperties)
             print(reccomendation)
-            
+
     template_vars = {
         'form': form,
         'entities': entities,
@@ -295,6 +295,3 @@ def findBestTime(dictTextProperties, dictTweetProperties):
         return [getDayName(datetime.datetime.today().weekday() + 1), bestTomorrowResult, hourToTime(bestTomorrowHour)]
     else:
         return [getDayName(datetime.datetime.today().weekday() + 2), bestDay2Result, hourToTime(bestDay2Hour)]
-
-
-
