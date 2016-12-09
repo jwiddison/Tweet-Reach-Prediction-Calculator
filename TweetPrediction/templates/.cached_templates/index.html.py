@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1481304928.3105948
+_modified_time = 1481307654.392493
 _enable_loop = True
 _template_filename = 'C:/Users/Sean/Desktop/NuviProject/TweetPrediction/templates/index.html'
 _template_uri = 'index.html'
@@ -30,11 +30,11 @@ def render_body(context,**pageargs):
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         result = context.get('result', UNDEFINED)
-        reccomendation = context.get('reccomendation', UNDEFINED)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
+        reccomendation = context.get('reccomendation', UNDEFINED)
         form = context.get('form', UNDEFINED)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
@@ -51,11 +51,11 @@ def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         result = context.get('result', UNDEFINED)
-        reccomendation = context.get('reccomendation', UNDEFINED)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def content():
             return render_content(context)
+        reccomendation = context.get('reccomendation', UNDEFINED)
         form = context.get('form', UNDEFINED)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">\r\n    <div class="container">\r\n      <div class="navbar-header">\r\n        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">\r\n          <span class="sr-only">Toggle navigation</span>\r\n          <span class="icon-bar"></span>\r\n          <span class="icon-bar"></span>\r\n          <span class="icon-bar"></span>\r\n        </button>\r\n        <a class="navbar-brand"><img src="')
         __M_writer(str(STATIC_URL))
@@ -65,7 +65,7 @@ def render_content(context,**pageargs):
         __M_writer(str(form.as_p()))
         __M_writer('\r\n                  <input type="submit" class="btn btn-primary center-block" value="Predict Reach"/>\r\n                </form>\r\n                <p>Retweet Count: ')
         __M_writer(str(result))
-        __M_writer('</p>\r\n                <p>If you want ')
+        __M_writer('</p>\r\n                <p>If you want an average of ')
         __M_writer(str( reccomendation[1] ))
         __M_writer(' retweets, consider posting ')
         __M_writer(str( reccomendation[0] ))
@@ -83,6 +83,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"source_encoding": "utf-8", "line_map": {"64": 31, "65": 36, "66": 36, "67": 39, "68": 39, "69": 40, "70": 40, "71": 40, "72": 40, "73": 40, "74": 40, "75": 60, "76": 60, "77": 76, "78": 76, "84": 78, "28": 0, "39": 1, "44": 130, "50": 3, "60": 3, "61": 13, "62": 13, "63": 31}, "filename": "C:/Users/Sean/Desktop/NuviProject/TweetPrediction/templates/index.html", "uri": "index.html"}
+{"line_map": {"64": 31, "65": 36, "66": 36, "67": 39, "68": 39, "69": 40, "70": 40, "71": 40, "72": 40, "73": 40, "74": 40, "75": 60, "76": 60, "77": 76, "78": 76, "84": 78, "28": 0, "39": 1, "44": 130, "50": 3, "60": 3, "61": 13, "62": 13, "63": 31}, "filename": "C:/Users/Sean/Desktop/NuviProject/TweetPrediction/templates/index.html", "uri": "index.html", "source_encoding": "utf-8"}
 __M_END_METADATA
 """

@@ -22,6 +22,7 @@ def process_request(request):
     sentiment = ''
     result = ''
     test = ''
+    reccomendation = ['','','']
     if request.method == 'POST':
         form = PredictionForm(request.POST)
         if form.is_valid():
@@ -230,13 +231,14 @@ def findBestTime(dictTextProperties, dictTweetProperties):
     while(hour < 13):
         dictTweetProperties['hour'] = hour
         result = hitMicrosoftAPI(dictTextProperties, dictTweetProperties)
-        hour = hour + 3
 
         print('hit for %s hour %s tweetcount: %s' % (dictTweetProperties['weekday'],dictTweetProperties['hour'], result))
 
         if float(result) > bestTodayResult:
             bestTodayResult = float(result)
             bestTodayHour = hour
+
+        hour = hour + 3
 
     print("best time today, tweetcount: %s, hour %s" % (bestTodayResult, bestTodayHour))
 
@@ -288,7 +290,7 @@ def findBestTime(dictTextProperties, dictTweetProperties):
 
     if bestTodayResult > bestTomorrowResult:
         if bestTodayResult > bestDay2Result:
-            return["Today", bestTodayResult, bestTodayHour]
+            return["Today", bestTodayResult, hourToTime(bestTodayHour)]
     elif bestTomorrowResult > bestDay2Result:
         return [getDayName(datetime.datetime.today().weekday() + 1), bestTomorrowResult, hourToTime(bestTomorrowHour)]
     else:
