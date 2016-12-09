@@ -20,6 +20,7 @@ def process_request(request):
     entities = ''
     sentiment = ''
     result = ''
+    test = ''
     if request.method == 'POST':
         form = PredictionForm(request.POST)
         if form.is_valid():
@@ -55,6 +56,11 @@ def process_request(request):
 
             total = unknown + person + location + organization + event+ art + consumer_good + other
 
+
+            # TODO: Fix this.  I just put it in here as a safeguard against dividing by 0.
+            if total == 0:
+                total = 1
+
             unknown_a = unknown / total
             person_a = person / total
             location_a = location / total
@@ -65,7 +71,7 @@ def process_request(request):
             other_a = other / total
 
             language = entities['language']
-            
+
 
             request2 = service.documents().analyzeSentiment(body=data)
             sentiment = request2.execute()
@@ -119,12 +125,9 @@ def process_request(request):
 
             try:
                 response = urllib.request.urlopen(req)
-
                 result = response.read()
-                # print(result)
             except urllib.error.HTTPError as error:
                 print("The request failed with status code: " + str(error.code))
-
                 # Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
                 print(error.info())
                 print(json.loads(error.read().decode("utf8", 'ignore')))
