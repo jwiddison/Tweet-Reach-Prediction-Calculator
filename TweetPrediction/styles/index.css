@@ -3,15 +3,34 @@
 }
 
 .navbar-default {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background-color:#203248;
   border-bottom: none;
-}
-
-.img-thumbnail, .btn-default, .navbar-default, .form-control, .btn-primary {
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 #navbar_image {
   height:50px;
   margin-top:-15px;
+}
+
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav>li>a:focus {
+  color: #0ccbe0;
+  font-weight:200;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+  color: #777;
+  background-color: transparent;
+}
+
+.white {
+  color:white;
+}
+
+.result {
+  font-size:1.25em;
+}
+
+.btn-primary {
+  background-color: #009ef6;
 }

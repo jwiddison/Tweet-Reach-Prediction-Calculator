@@ -303,6 +303,3 @@ def findBestTime(dictTextProperties, dictTweetProperties):
         return [getDayName(datetime.datetime.today().weekday() + 1), bestTomorrowResult, hourToTime(bestTomorrowHour)]
     else:
         return [getDayName(datetime.datetime.today().weekday() + 2), bestDay2Result, hourToTime(bestDay2Hour)]
-
-
-
