@@ -288,8 +288,6 @@ def findBestTime(dictTextProperties, dictTweetProperties):
 
     dictTweetProperties['weekday'] = getDayName(weekday)
 
-    # print(">>>>>>>>>")
-    # print(dictTweetProperties['weekday'])
 
     while(hour < 13):
         # print("last day initiated")
@@ -317,6 +315,10 @@ def findBestTime(dictTextProperties, dictTweetProperties):
         if bestTodayResult > bestDay2Result:
             return["Today", bestTodayResult, hourToTime(bestTodayHour)]
     elif bestTomorrowResult > bestDay2Result:
-        return [getDayName(datetime.datetime.today().weekday() + 1), bestTomorrowResult, hourToTime(bestTomorrowHour)]
+        if weekday - 1 < 0:
+            weekday = 6
+        else:
+            weekday -= 1
+        return [getDayName(weekday), bestTomorrowResult, hourToTime(bestTomorrowHour)]
     else:
-        return [getDayName(datetime.datetime.today().weekday() + 2), bestDay2Result, hourToTime(bestDay2Hour)]
+        return [getDayName(weekday), bestDay2Result, hourToTime(bestDay2Hour)]

@@ -20,8 +20,8 @@ h6 {
 }
 
 .intro-header {
-    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
-    padding-bottom: 50px;
+    /*padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content!
+    padding-bottom: 50px;*/
     text-align: center;
     color: #f8f8f8;
     background: url(../media/pics/intro-bg.jpg) no-repeat center center;
@@ -32,8 +32,8 @@ h6 {
 
 .intro-message {
     position: relative;
-    padding-top: 20%;
-    padding-bottom: 20%;
+    padding-top:120px;
+    padding-bottom:120px;
 }
 
 .intro-message > h1 {
@@ -59,12 +59,6 @@ h6 {
 
     .intro-message > h1 {
         font-size: 3em;
-    }
-
-    ul.intro-social-buttons > li {
-        display: block;
-        margin-bottom: 20px;
-        padding: 0;
     }
 
     ul.intro-social-buttons > li:last-child {
