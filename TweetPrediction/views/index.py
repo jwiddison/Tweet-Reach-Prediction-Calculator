@@ -169,15 +169,15 @@ def hitMicrosoftAPI(dictTextProperties, dictTweetProperties):
         result = response.read().decode('utf-8')
         result = json.loads(result)
         result = result["Results"]["output1"][0]["Scored Labels"]
-        print(result)
+        # print(result)
         result = float(result)
         result = format(result, '.2f')
         return result
     except urllib.error.HTTPError as error:
-        print("The request failed with status code: " + str(error.code))
+        # print("The request failed with status code: " + str(error.code))
         # Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
-        print(error.info())
-        print(json.loads(error.read().decode("utf8", 'ignore')))
+        # print(error.info())
+        # print(json.loads(error.read().decode("utf8", 'ignore')))
         return error.info()
 
 def getDayName(dayInt):
@@ -241,7 +241,7 @@ def findBestTime(dictTextProperties, dictTweetProperties):
         dictTweetProperties['hour'] = hour
         result = hitMicrosoftAPI(dictTextProperties, dictTweetProperties)
 
-        print('hit for %s hour %s tweetcount: %s' % (dictTweetProperties['weekday'],dictTweetProperties['hour'], result))
+        # print('hit for %s hour %s tweetcount: %s' % (dictTweetProperties['weekday'],dictTweetProperties['hour'], result))
 
         if float(result) > bestTodayResult:
             bestTodayResult = float(result)
@@ -260,6 +260,7 @@ def findBestTime(dictTextProperties, dictTweetProperties):
 
     while(hour < 13):
         dictTweetProperties['hour'] = hour
+        # print(hour)
         result = hitMicrosoftAPI(dictTextProperties, dictTweetProperties)
 
         # print('hit for %s hour %s tweetcount: %s' % (dictTweetProperties['weekday'],dictTweetProperties['hour'], result))
@@ -276,13 +277,28 @@ def findBestTime(dictTextProperties, dictTweetProperties):
     day = datetime.datetime.today().day + 2
 
     dictTweetProperties['day'] = day
-    dictTweetProperties['weekday'] = getDayName(datetime.datetime.today().weekday() + 2)
+    # print(datetime.datetime.today().weekday() + 2)
+
+    weekday = datetime.datetime.today().weekday() + 2
+
+    if weekday == 7:
+        weekday = 0
+    elif weekday == 8:
+        weekday = 1
+
+    dictTweetProperties['weekday'] = getDayName(weekday)
+
+    # print(">>>>>>>>>")
+    # print(dictTweetProperties['weekday'])
 
     while(hour < 13):
+        # print("last day initiated")
+        # print(dictTweetProperties, dictTextProperties)
         dictTweetProperties['hour'] = hour
+        # print(hour)
         result = hitMicrosoftAPI(dictTextProperties, dictTweetProperties)
 
-        print('hit for %s hour %s tweetcount: %s' % (dictTweetProperties['weekday'],dictTweetProperties['hour'], result))
+        # print('hit for %s hour %s tweetcount: %s' % (dictTweetProperties['weekday'],dictTweetProperties['hour'], result))
 
         if float(result) > bestDay2Result:
             bestDay2Result = float(result)
@@ -290,7 +306,7 @@ def findBestTime(dictTextProperties, dictTweetProperties):
 
         hour = hour + 3
 
-    print("best time day 2, tweetcount: %s, hour: %s" % (bestDay2Result, bestDay2Hour))
+    # print("best time day 2, tweetcount: %s, hour: %s" % (bestDay2Result, bestDay2Hour))
 
 
     # print("best time today, tweetcount: %s, hour %s" % (bestTodayResult, bestTodayHour))
