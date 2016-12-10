@@ -98,7 +98,7 @@ def process_request(request):
             reccomendation_components = findBestTime(textProperties, tweetProperties)
 
             reccomendation = "If you want an average of " + str(reccomendation_components[1]) + " retweets, consider posting " + str(reccomendation_components[0]) + " at " + str(reccomendation_components[2])
-            
+
 
             if reccomendation_components[0] == 'Today' and reccomendation_components[2] == hourToTime(datetime.datetime.now().hour):
                 reccomendation = "You're in luck!  Tweet now for the max amount of tweets."
@@ -169,6 +169,7 @@ def hitMicrosoftAPI(dictTextProperties, dictTweetProperties):
         result = response.read().decode('utf-8')
         result = json.loads(result)
         result = result["Results"]["output1"][0]["Scored Labels"]
+        print(result)
         result = float(result)
         result = format(result, '.2f')
         return result
@@ -240,7 +241,7 @@ def findBestTime(dictTextProperties, dictTweetProperties):
         dictTweetProperties['hour'] = hour
         result = hitMicrosoftAPI(dictTextProperties, dictTweetProperties)
 
-        # print('hit for %s hour %s tweetcount: %s' % (dictTweetProperties['weekday'],dictTweetProperties['hour'], result))
+        print('hit for %s hour %s tweetcount: %s' % (dictTweetProperties['weekday'],dictTweetProperties['hour'], result))
 
         if float(result) > bestTodayResult:
             bestTodayResult = float(result)
@@ -281,7 +282,7 @@ def findBestTime(dictTextProperties, dictTweetProperties):
         dictTweetProperties['hour'] = hour
         result = hitMicrosoftAPI(dictTextProperties, dictTweetProperties)
 
-        # print('hit for %s hour %s tweetcount: %s' % (dictTweetProperties['weekday'],dictTweetProperties['hour'], result))
+        print('hit for %s hour %s tweetcount: %s' % (dictTweetProperties['weekday'],dictTweetProperties['hour'], result))
 
         if float(result) > bestDay2Result:
             bestDay2Result = float(result)
@@ -289,7 +290,7 @@ def findBestTime(dictTextProperties, dictTweetProperties):
 
         hour = hour + 3
 
-    # print("best time day 2, tweetcount: %s, hour: %s" % (bestDay2Result, bestDay2Hour))
+    print("best time day 2, tweetcount: %s, hour: %s" % (bestDay2Result, bestDay2Hour))
 
 
     # print("best time today, tweetcount: %s, hour %s" % (bestTodayResult, bestTodayHour))
